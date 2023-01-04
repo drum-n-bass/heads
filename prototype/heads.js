@@ -75,18 +75,6 @@ const params = {
 
 
 
-window.addEventListener('load', (event) => {
-
-	// find all divs with data-identicon and generate + append a canvas
-	let icons = document.querySelectorAll("[data-identicon]")
-	icons.forEach(icon => {
-		canvas = draw(icon.dataset)
-		icon.appendChild(canvas);	
-	});
-
-});
-
-
 function draw(dataset){
 
 	const seed = md5(dataset.address)
@@ -151,6 +139,22 @@ function draw(dataset){
 
 
 
+
+
+// draws a Layer ( 8x8 ) from pixel data in a color
+function drawLayer(ctx, data, color, seed){
+	const rows = data.split(",");
+	rows.forEach( (row, r) => {
+		const pixels = row.split("", 8);
+		pixels.forEach( (pixel, p) => {
+			if (pixel == 1) { drawPixel(ctx, p, r, color, seed ); }
+		});
+	});
+	return ctx;
+}
+
+
+
 function drawPixel(ctx, x, y, color, seed){
 
 	// seedbased randomness in color variation
@@ -169,19 +173,6 @@ function drawPixel(ctx, x, y, color, seed){
 
 
 
-// draws a Layer ( 8x8 ) from pixel data in a color
-function drawLayer(ctx, data, color, seed){
-	const rows = data.split(",");
-	rows.forEach( (row, r) => {
-		const pixels = row.split("", 8);
-		pixels.forEach( (pixel, p) => {
-			if (pixel == 1) { drawPixel(ctx, p, r, color, seed ); }
-		});
-	});
-	return ctx;
-}
-
-
 
 // uses a string and a stringposition with an option end
 // to generate a integer value from that part
@@ -196,9 +187,6 @@ function hex2dec(hex){
 function processParam(param, value) {
 	return param.min + (value % ( param.max - param.min ));
 }
-
-
-
 
 
 

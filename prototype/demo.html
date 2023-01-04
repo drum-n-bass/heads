@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+	
+<body>
+
+<link href="css.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+<script src="heads.js"></script>
+
+
+<script>
+
+// find all divs in DOM with data-identicon and generate + append a canvas 
+
+window.addEventListener('load', (event) => {
+
+	let icons = document.querySelectorAll("[data-identicon]")
+	icons.forEach(icon => {
+		canvas = draw(icon.dataset)
+		icon.appendChild(canvas);	
+	});
+
+});
+
+</script>
+
+
+	<section>
+
+		<div data-identicon data-address="0x00000000219ab540356cbb839cbe05303d7705fa"></div>
+		<div data-identicon data-address="0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"></div>
+		<div data-identicon data-address="0xbe0eb53f46cd790cd13851d5eff43d12404d33e8"></div>
+		<div data-identicon data-address="0xda9dfa130df4de4673b89022ee50ff26f6ea73cf"></div>
+		<div data-identicon data-address="0x0716a17fbaee714f1e6ab0f9d59edbc5f09815c0"></div>
+		<div data-identicon data-address="0x0f962096Cd202bec1F6383BD8aA9d703e797ca70"></div>
+		<div data-identicon data-address="0xf977814e90da44bfa03b6295a0616a897441acec"></div>
+		<div data-identicon data-address="0x8315177ab297ba92a06054ce80a67ed4dbd7ed3a"></div>
+		<div data-identicon data-address="0x47ac0fb4f2d84898e4d9e7b4dab3c24507a6d503"></div>
+		<div data-identicon data-address="0x61edcdf5bb737adffe5043706e7c5bb1f1a56eea"></div>
+
+	</section>
+
+
+</body>
+
+
+
+</html>
